@@ -1,0 +1,39 @@
+public class Main
+{
+	public static void main(String[] args) {
+		System.out.println(wheninrome(45));
+	}
+	public static String wheninrome(int num){
+	   String result=" ";
+	  int length = (int) (Math.log10(num) + 1);
+	  int[]split = new int [length];
+	  int[]check = new int [length];
+	  int h=0;
+	  for( int i=length-1; i>0; i--){
+	     split[h]=num/(10^i);
+	     check[h]=h;
+	     h++;
+	  }
+	  for(int e=length-1; e>0; e--){
+	    String placeholder= "";
+	    String fives = "VLD";
+	    String tens = "IXCM";
+	    System.out.println(e);
+	    if(split[e]==5){
+	        result.concat(fives.substring(check[e],check[e]+1));
+	    }
+	    if(split[e]==4){
+	        result.concat("I"+fives.substring(check[e],check[e]+1));
+	    }
+	    if(split[e]==9){
+	        result.concat("I"+tens.substring(check[e],check[e]+1));
+	    }
+	    if(split[e]!=4||split[e]!=5||split[e]!=9){
+	        for(int g=0; g<(split[e]%5); g++){
+	            result.concat(tens.substring(check[e],check[e]+1));
+	        }
+	    }
+	  }
+	return result;
+	}
+}
